@@ -5,7 +5,7 @@ The script locates a hospital offering vaccinations for all adults in India usin
 The alarm feature is specific to Mac. One can change by using some other command instead of 'afplay'
 
 ## Usage
-### ./cowin.py [-p <pin> -x <distid> -d <date>]
+### vaccineLocator.py [-p <pin> || -x <distid>] [-d <date>]
 
 ## States
 | State ID | State Name |
