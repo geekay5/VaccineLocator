@@ -24,7 +24,7 @@ server = production_server
 def validateArgs(argv):
     global mobile, pin, date, dist_id
     mobile = "9999999999"
-    pin = "560003"
+    pin = None
     date = "06-05-2021"
     dist_id = "294"  # 294 BBMP, 272 Bidar, 267 Gulbarga 265 BLR Urban
 
@@ -126,15 +126,19 @@ def getCalByPin():
 
 
 def findAvailableHosp(centers):
+    found = False
     if centers != None:
         for k in centers:
-            for y in centers[k]:
-                sessions = y["sessions"]
+            for center in centers[k]:
+                sessions = center["sessions"]
                 for session in sessions:
                     if session["available_capacity"] != 0 and session["min_age_limit"] != 45:
-                        print("Available ", y["name"],
+                        print(session["available_capacity"], "doses are available at ", center["name"],
                               "on ", session["date"])
-                        os.system('afplay -t 30 alarm.mp3')
+                        found = True
+        if found is True:
+            os.system('afplay -t 60 alarm.mp3')
+    return found
 
 
 def getStates():
@@ -172,15 +176,18 @@ if __name__ == "__main__":
     #token = confirmOTP()
     # print(token)
     # getBeneficiaries()
-    '''
-    #getListByPin(pin=pin, date=date)
-    '''
     centers = getCalByPin()
     findAvailableHosp(centers)
     '''
     # getStates()
     # getDistricts()
     while True:
-        centers = getCalByDist()
-        findAvailableHosp(centers)
-        time.sleep(10)
+        if pin is not None:
+            centers = getCalByPin()
+        else:
+            centers = getCalByDist()
+        found = findAvailableHosp(centers)
+        if found is True:
+            break
+        else:
+            time.sleep(10)
