@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 import json
 import requests
 import os
 import sys
 import getopt
 import hashlib
+import time
 production_server = "https://cdn-api.co-vin.in/api"
 demo_server = "https://api.demo.co-vin.in/api"
 ERROR_MSG = "Usage: cowin.py -m <mobile> -p <pin> -d <date>"
@@ -20,23 +22,30 @@ server = production_server
 
 
 def validateArgs(argv):
-    global mobile, pin, date
-    mobile = "9035050504"
+    global mobile, pin, date, dist_id
+    mobile = "9999999999"
     pin = "560003"
     date = "06-05-2021"
+    dist_id = "294"  # 294 BBMP, 272 Bidar, 267 Gulbarga 265 BLR Urban
+
     try:
-        opts, args = getopt.getopt(argv, "m:p:d:")
+        opts, args = getopt.getopt(argv, "m:p:d:x:")
     except getopt.GetoptError:
         print(ERROR_MSG)
         sys.exit(2)
 
     for opt, arg in opts:
+        if opt is None:
+            print(ERROR_MSG)
+            sys.exit(2)
         if opt in ("-m"):
             mobile = arg
         elif opt in ("-p"):
             pin = arg
         elif opt in ("-d"):
             date = arg
+        elif opt in ("-x"):
+            dist_id = arg
         else:
             print(ERROR_MSG)
             sys.exit(2)
@@ -125,7 +134,7 @@ def findAvailableHosp(centers):
                     if session["available_capacity"] != 0 and session["min_age_limit"] != 45:
                         print("Available ", y["name"],
                               "on ", session["date"])
-                        #os.system('afplay -t 30 alarm.mp3')
+                        os.system('afplay -t 30 alarm.mp3')
 
 
 def getStates():
@@ -144,7 +153,6 @@ def getDistricts():
 
 
 def getCalByDist():
-    dist_id = "294"  # 294 BBMP, 272 Bidar, 267 Gulbarga 265 BLR Urban
     url = "/v2/appointment/sessions/public/calendarByDistrict?district_id=" + \
         dist_id + "&date=" + date
     rd = sendGetRequest(url=url, headers=headers)
@@ -172,5 +180,7 @@ if __name__ == "__main__":
     '''
     # getStates()
     # getDistricts()
-    centers = getCalByDist()
-    findAvailableHosp(centers)
+    while True:
+        centers = getCalByDist()
+        findAvailableHosp(centers)
+        time.sleep(10)
