@@ -1,4 +1,4 @@
-# COWIN 
+# Covid Vaccine Locator 
 
 The script locates a hospital offering vaccinations for all adults in India using Cowin platform's published APIs
 
