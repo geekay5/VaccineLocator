@@ -1,3 +1,9 @@
 theme: jekyll-theme-slate
 title: Vaccine Locator
 description: Find Covid Vaccination Slots in Bengaluru and other places in India
+
+analytics:
+  provider               : "google" # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : UA-190618649-1
+    anonymize_ip         : # true, false (default)
