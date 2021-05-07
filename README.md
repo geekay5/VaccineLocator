@@ -7,6 +7,14 @@ The alarm feature is specific to Mac. It uses 'afplay' command to play a audio f
 ## Usage
 ### vaccineLocator.py [-p pin_code | -x district_id] [-a age]
 
+#### Default Values
+
+**pin_code = None**
+**district_id = 294 (BBMP)**
+**age = 18**
+
+So, by default the script looks for hospitals in BBMP limits for age 18.
+
 ## States
 | State ID | State Name |
 | -------- | ---------- |
