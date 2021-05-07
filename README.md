@@ -2,10 +2,10 @@
 
 The script locates a hospital offering vaccinations for all adults in India using Cowin platform's published APIs
 
-The alarm feature is specific to Mac. One can change by using some other command instead of 'afplay'
+The alarm feature is specific to Mac. It uses 'afplay' command to play a audio file. On other platforms change it by using some other command instead of 'afplay' to play the audio file.
 
 ## Usage
-### vaccineLocator.py [-p pin_code || -x district_id] [-d <date>]
+### vaccineLocator.py [-p pin_code | -x district_id] [-a age]
 
 ## States
 | State ID | State Name |
