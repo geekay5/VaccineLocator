@@ -24,8 +24,9 @@ yourself using Cowin
 If you'd like to play around with the scripts you can use the following codes.
 
 ## States
+
 | State ID | State Name |
-| -------- | ---------- |
+---- | ----
 | 1 | Andaman and Nicobar Islands |
 | 2 | Andhra Pradesh |
 | 3 | Arunachal Pradesh |
@@ -65,8 +66,9 @@ If you'd like to play around with the scripts you can use the following codes.
 | 36 | West Bengal |
 
 ## Karnataka Districts:
+
 | District ID | District Name |
-| ------------ | -------------- |
+---- | ----
 | 270 | Bagalkot |
 | 276 | Bangalore Rural|
 | 265 | Bangalore Urban|
