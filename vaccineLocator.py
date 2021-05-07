@@ -135,8 +135,8 @@ def findAvailableHosp(centers):
                 sessions = center["sessions"]
                 for session in sessions:
                     if session["available_capacity"] != 0 and session["min_age_limit"] == age:
-                        print(session["available_capacity"], "doses are available at ", center["name"],
-                              "on ", session["date"])
+                        print(session["available_capacity"], "doses are available on ", session["date"],
+                              "at ", center["name"], "located in area with pin ", center["pincode"])
                         found = True
         if found is True:
             os.system('afplay -t 60 alarm.mp3')
