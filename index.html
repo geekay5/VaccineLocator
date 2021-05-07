@@ -1,0 +1,311 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="covid-vaccine-locator">Covid Vaccine Locator</h1>
+<p>The script locates a hospital offering vaccinations for all adults in India using Cowin platform&#39;s published APIs</p>
+<p>The alarm feature is specific to Mac. It uses &#39;afplay&#39; command to play a audio file. On other platforms change it by using some other command instead of &#39;afplay&#39; to play the audio file.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="vaccinelocator-py-p-pin_code-x-district_id-a-age-">vaccineLocator.py [-p pin_code | -x district_id] [-a age]</h3>
+<h4 id="default-values">Default Values</h4>
+<p><strong>pin_code = None</strong>
+<strong>district_id = 294 (BBMP)</strong>
+<strong>age = 18</strong></p>
+<p>So, by default the script looks for hospitals in BBMP limits for age 18.</p>
+<p><a href="https://github.com/geekay5/VaccineLocator/archive/refs/heads/main.zip" title="Download VaccineLocator"><strong>Download</strong></a></p>
+<h3 id="this-utility-won-t-book-a-vaccine-for-you-it-ll-just-search-for-available-slots-you-ll-have-to-book-the-slot-yourself-using-cowin">This utility won&#39;t book a vaccine for you. It&#39;ll just search for available slots. You&#39;ll have to book the slot yourself using Cowin</h3>
+<p>If you&#39;d like to play around with the scripts you can use the following codes.</p>
+<h2 id="states">States</h2>
+<table>
+<thead>
+<tr>
+<th>State ID</th>
+<th>State Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Andaman and Nicobar Islands</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Andhra Pradesh</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Arunachal Pradesh</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Assam</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bihar</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Chandigarh</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Chhattisgarh</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Dadra and Nagar Haveli</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Daman and Diu</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Delhi</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Goa</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Gujarat</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Haryana</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Himachal Pradesh</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Jammu and Kashmir</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jharkhand</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Karnataka</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Kerala</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Ladakh</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Lakshadweep</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Madhya Pradesh</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Maharashtra</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Manipur</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Meghalaya</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Mizoram</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Nagaland</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Odisha</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Puducherry</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Punjab</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Rajasthan</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Sikkim</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Tamil Nadu</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Telangana</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Tripura</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Uttar Pradesh</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Uttarakhand</td>
+</tr>
+<tr>
+<td>36</td>
+<td>West Bengal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="karnataka-districts-">Karnataka Districts:</h2>
+<table>
+<thead>
+<tr>
+<th>District ID</th>
+<th>District Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>270</td>
+<td>Bagalkot</td>
+</tr>
+<tr>
+<td>276</td>
+<td>Bangalore Rural</td>
+</tr>
+<tr>
+<td>265</td>
+<td>Bangalore Urban</td>
+</tr>
+<tr>
+<td>294</td>
+<td>BBMP</td>
+</tr>
+<tr>
+<td>264</td>
+<td>Belgaum</td>
+</tr>
+<tr>
+<td>274</td>
+<td>Bellary</td>
+</tr>
+<tr>
+<td>272</td>
+<td>Bidar</td>
+</tr>
+<tr>
+<td>271</td>
+<td>Chamarajanagar</td>
+</tr>
+<tr>
+<td>273</td>
+<td>Chikamagalur</td>
+</tr>
+<tr>
+<td>291</td>
+<td>Chikkaballapur</td>
+</tr>
+<tr>
+<td>268</td>
+<td>Chitradurga</td>
+</tr>
+<tr>
+<td>269</td>
+<td>Dakshina Kannada</td>
+</tr>
+<tr>
+<td>275</td>
+<td>Davanagere</td>
+</tr>
+<tr>
+<td>278</td>
+<td>Dharwad</td>
+</tr>
+<tr>
+<td>280</td>
+<td>Gadag</td>
+</tr>
+<tr>
+<td>267</td>
+<td>Gulbarga</td>
+</tr>
+<tr>
+<td>289</td>
+<td>Hassan</td>
+</tr>
+<tr>
+<td>279</td>
+<td>Haveri</td>
+</tr>
+<tr>
+<td>283</td>
+<td>Kodagu</td>
+</tr>
+<tr>
+<td>277</td>
+<td>Kolar</td>
+</tr>
+<tr>
+<td>282</td>
+<td>Koppal</td>
+</tr>
+<tr>
+<td>290</td>
+<td>Mandya</td>
+</tr>
+<tr>
+<td>266</td>
+<td>Mysore</td>
+</tr>
+<tr>
+<td>284</td>
+<td>Raichur</td>
+</tr>
+<tr>
+<td>292</td>
+<td>Ramanagara</td>
+</tr>
+<tr>
+<td>287</td>
+<td>Shimoga</td>
+</tr>
+<tr>
+<td>288</td>
+<td>Tumkur</td>
+</tr>
+<tr>
+<td>286</td>
+<td>Udupi</td>
+</tr>
+<tr>
+<td>281</td>
+<td>Uttar Kannada</td>
+</tr>
+<tr>
+<td>293</td>
+<td>Vijayapura</td>
+</tr>
+<tr>
+<td>285</td>
+<td>Yadgir</td>
+</tr>
+</tbody>
+</table>
+</body></html>
