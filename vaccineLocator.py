@@ -6,6 +6,7 @@ import sys
 import getopt
 import hashlib
 import time
+import datetime
 production_server = "https://cdn-api.co-vin.in/api"
 demo_server = "https://api.demo.co-vin.in/api"
 ERROR_MSG = "Usage: cowin.py -m <mobile> -p <pin> -d <date>"
@@ -22,14 +23,15 @@ server = production_server
 
 
 def validateArgs(argv):
-    global mobile, pin, date, dist_id
+    global mobile, pin, date, dist_id, age
     mobile = "9999999999"
     pin = None
-    date = "06-05-2021"
+    date = None
+    age = 18
     dist_id = "294"  # 294 BBMP, 272 Bidar, 267 Gulbarga 265 BLR Urban
 
     try:
-        opts, args = getopt.getopt(argv, "m:p:d:x:")
+        opts, args = getopt.getopt(argv, "m:p:x:a:")
     except getopt.GetoptError:
         print(ERROR_MSG)
         sys.exit(2)
@@ -42,10 +44,10 @@ def validateArgs(argv):
             mobile = arg
         elif opt in ("-p"):
             pin = arg
-        elif opt in ("-d"):
-            date = arg
         elif opt in ("-x"):
             dist_id = arg
+        elif opt in ("-a"):
+            age = int(arg)
         else:
             print(ERROR_MSG)
             sys.exit(2)
@@ -108,7 +110,7 @@ def getBeneficiaries():
 
 def getListByPin(pin, date):
     heads = headers
-    #heads["Authorization"] = "Bearer " + token
+    # heads["Authorization"] = "Bearer " + token
     url = "/v2/appointment/sessions/public/findByPin?pincode=" + pin + "&date=" + date
     rd = sendGetRequest(url=url, headers=heads)
     if rd != None:
@@ -117,7 +119,7 @@ def getListByPin(pin, date):
 
 def getCalByPin():
     heads = headers
-    #heads["Authorization"] = "Bearer " + token
+    # heads["Authorization"] = "Bearer " + token
     url = "/v2/appointment/sessions/public/calendarByPin?pincode=" + pin + "&date=" + date
     rd = sendGetRequest(url=url, headers=heads)
     if rd != None:
@@ -132,7 +134,7 @@ def findAvailableHosp(centers):
             for center in centers[k]:
                 sessions = center["sessions"]
                 for session in sessions:
-                    if session["available_capacity"] != 0 and session["min_age_limit"] != 45:
+                    if session["available_capacity"] != 0 and session["min_age_limit"] == age:
                         print(session["available_capacity"], "doses are available at ", center["name"],
                               "on ", session["date"])
                         found = True
@@ -168,12 +170,12 @@ def getCalByDist():
 if __name__ == "__main__":
     validateArgs(sys.argv[1:])
     '''
-    #txnId = generateOTP()
+    # txnId = generateOTP()
     print(txnId)
     otpPin = input("Enter OTP: ")
     otp = hashlib.sha256(otpPin.encode('utf-8')).hexdigest()
     print(otp)
-    #token = confirmOTP()
+    # token = confirmOTP()
     # print(token)
     # getBeneficiaries()
     centers = getCalByPin()
@@ -181,6 +183,8 @@ if __name__ == "__main__":
     '''
     # getStates()
     # getDistricts()
+    today = datetime.date.today()
+    date = today.strftime("%d-%m-%Y")
     while True:
         if pin is not None:
             centers = getCalByPin()
