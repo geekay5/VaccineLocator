@@ -18,8 +18,7 @@ So, by default the script looks for hospitals in BBMP limits for age 18.
 
 [**Download**](https://github.com/geekay5/VaccineLocator/archive/refs/heads/main.zip "Download VaccineLocator")
 
-### This utility won't book a vaccine for you. It'll just search for available slots. You'll have to book the slot
-yourself using Cowin
+### This utility won't book a vaccine for you. It'll just search for available slots. You'll have to book the slot yourself using Cowin.
 
 If you'd like to play around with the scripts you can use the following codes.
 
