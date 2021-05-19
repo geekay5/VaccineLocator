@@ -7,13 +7,14 @@ import hashlib
 import time
 import datetime
 from cwutils import *
+import platform
 
 ERROR_MSG = "Usage: cowin.py -m <mobile> -p <pin> -d <date>"
 
 
 def validateArgs(argv):
     global mobile, pin, date, dist_id, age, login
-    mobile = "9999999999"
+    mobile = "9035050504"
     pin = None
     date = None
     age = 18
@@ -60,6 +61,10 @@ def main():
         else:
             time.sleep(10)
     if found is True:
+        if platform.system() == 'Darwin':
+            os.system('afplay -t 60 alarm.wav')
+        elif platform.system() == 'Linux':
+            os.system('aplay -d 60 alarm.wav')
         bookSlot = input("Slots found. Do you want to book vaccination (y/n)?")
         if bookSlot == 'y':
             txnId = generateOTP(mobile)

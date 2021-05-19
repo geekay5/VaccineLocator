@@ -25,10 +25,9 @@ BENEFICIARIES_URL = "/v2/appointment/beneficiaries"
 
 BASE_HEADERS = {
     'content-type': 'application/json',
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:88.0) Gecko/20100101 Firefox/88.0",
-    "Accept-Language": "en_US"
+    'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
+    'Accept-Language': 'en_US'
 }
-
 
 def setToken(token):
     global gToken
@@ -39,7 +38,7 @@ def sendPostRequest(url, jd, headers):
     print(url)
     r = requests.post(url, jd, headers=headers)
     if r.status_code != 200:
-        print("Error: ", r.status_code)
+        print("Error: ", r.status_code, r.text)
         return None
     return r.json()
 
@@ -117,8 +116,6 @@ def findAvailableHosp(centers, age):
                               "at ", center["name"], "located in area with pin ", center["pincode"])
                         found = True
                         # print(center)
-        if found is True:
-            os.system('afplay -t 60 alarm.mp3')
     return found
 
 
